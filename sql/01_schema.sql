@@ -56,3 +56,13 @@ CREATE TABLE order_items (
     FOREIGN KEY (product_id) REFERENCES products (product_id),
     FOREIGN KEY (seller_id) REFERENCES sellers (seller_id)
 );
+
+CREATE TABLE order_payments (
+    order_id TEXT NOT NULL,
+    payment_sequential INT NOT NULL,
+    payment_type TEXT NOT NULL,
+    payment_installments INT NOT NULL,
+    payment_value FLOAT NOT NULL,
+    PRIMARY KEY (order_id, payment_sequential),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
