@@ -1,3 +1,13 @@
+PRAGMA foreign_keys = ON;
+DROP TABLE IF EXISTS order_reviews;
+DROP TABLE IF EXISTS order_payments;
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS sellers;
+DROP TABLE IF EXISTS product_category_translation;
+DROP TABLE IF EXISTS customers;
+
 CREATE TABLE customers(
     customer_id TEXT PRIMARY KEY,
     customer_unique_id TEXT NOT NULL,
@@ -70,7 +80,7 @@ CREATE TABLE order_payments (
 CREATE TABLE order_reviews (
     review_id TEXT PRIMARY KEY,
     order_id TEXT NOT NULL,
-    review_score INT NOT NULL
+    review_score INT NOT NULL,
     review_comment_title TEXT,
     review_comment_message TEXT,
     review_creation_date TEXT NOT NULL,
