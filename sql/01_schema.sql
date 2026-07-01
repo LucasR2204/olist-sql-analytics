@@ -66,3 +66,14 @@ CREATE TABLE order_payments (
     PRIMARY KEY (order_id, payment_sequential),
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
+
+CREATE TABLE order_reviews (
+    review_id TEXT PRIMARY KEY,
+    order_id TEXT NOT NULL,
+    review_score INT NOT NULL
+    review_comment_title TEXT,
+    review_comment_message TEXT,
+    review_creation_date TEXT NOT NULL,
+    review_answer_timestamp TEXT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
