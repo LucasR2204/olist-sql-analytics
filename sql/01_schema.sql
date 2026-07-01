@@ -35,10 +35,24 @@ CREATE TABLE orders(
     order_id TEXT PRIMARY KEY,
     customer_id TEXT NOT NULL,
     order_status TEXT NOT NULL,
-    order_purchase_timestamp DATETIME NOT NULL,
-    order_approved_at TEXT NOT NULL,
-    order_delivered_carrier_date TEXT NOT NULL,
-    order_delivered_customer_date TEXT NOT NULL,
+    order_purchase_timestamp TEXT NOT NULL,
+    order_approved_at TEXT ,
+    order_delivered_carrier_date TEXT,
+    order_delivered_customer_date TEXT,
     order_estimated_delivery_date TEXT NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+);
+
+CREATE TABLE order_items (
+    order_id TEXT NOT NULL,
+    order_item_id TEXT NOT NULL,
+    product_id TEXT NOT NULL,
+    seller_id TEXT NOT NULL,
+    shipping_limit_date TEXT,
+    price FLOAT NOT NULL,
+    freight_value FLOAT NOT NULL,
+    PRIMARY KEY (order_id, order_item_id),
+    FOREIGN KEY (order_id) REFERENCES orders (order_id),
+    FOREIGN KEY (product_id) REFERENCES products (product_id),
+    FOREIGN KEY (seller_id) REFERENCES sellers (seller_id)
 );
