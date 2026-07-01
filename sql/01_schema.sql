@@ -30,3 +30,15 @@ CREATE TABLE products(
     product_width_cm FLOAT NOT NULL,
     FOREIGN KEY (product_category_name) REFERENCES product_category_translation (product_category_name)
 );
+
+CREATE TABLE orders(
+    order_id TEXT PRIMARY KEY,
+    customer_id TEXT NOT NULL,
+    order_status TEXT NOT NULL,
+    order_purchase_timestamp DATETIME NOT NULL,
+    order_approved_at TEXT NOT NULL,
+    order_delivered_carrier_date TEXT NOT NULL,
+    order_delivered_customer_date TEXT NOT NULL,
+    order_estimated_delivery_date TEXT NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+);
