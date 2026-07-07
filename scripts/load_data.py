@@ -19,3 +19,9 @@ TABLES = {
     "olist_order_reviews_dataset.csv": "order_reviews",
     "olist_order_items_dataset.csv": "order_items"
 }
+
+def main():
+    connection = sqlite3.connect(DB_PATH)
+
+if __name__ == "__main__":
+    main()
