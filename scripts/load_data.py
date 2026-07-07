@@ -22,6 +22,20 @@ TABLES = {
 
 def main():
     connection = sqlite3.connect(DB_PATH)
+    cursor = connection.cursor()
+
+    # Create the database schema
+    schema_sql = SCHEMA.read_text()
+    cursor.executescript(schema_sql)
+
+    for file_name, table_name in TABLES.items():
+        csv_path = RAW_DIR / file_name
+        df = pd.read_csv(csv_path)
+        df.to_sql(table_name, connection, if_exists='replace', index=False)
+
+    connection.commit()
+    connection.close()
+
 
 if __name__ == "__main__":
     main()
